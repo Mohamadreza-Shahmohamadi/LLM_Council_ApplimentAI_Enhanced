@@ -71,8 +71,8 @@ class Conversation(BaseModel):
     messages: List[Dict[str, Any]]
 
 
-@app.get("/")
-async def root():
+@app.get("/api/health")
+async def health_check():
     """Health check endpoint."""
     return {"status": "ok", "service": "LLM Council API"}
 
@@ -1204,6 +1204,11 @@ if os.path.exists(frontend_dist):
     @app.get("/favicon.ico")
     async def favicon():
         return FileResponse(os.path.join(frontend_dist, "favicon.ico"))
+
+    # Explicit root route for SPA
+    @app.get("/")
+    async def serve_root():
+        return FileResponse(os.path.join(frontend_dist, "index.html"))
 
     # Catch-all route for SPA (React Router)
     @app.get("/{full_path:path}")
