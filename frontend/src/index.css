@@ -1,0 +1,151 @@
+:root {
+  /* --- Midnight Glass Palette --- */
+
+  /* Backgrounds */
+  --bg-dark: #0f172a;       /* Slate 900 */
+  --bg-darker: #020617;     /* Slate 950 */
+  --bg-card: rgba(15, 23, 42, 0.6); /* Glass card base */
+  --bg-sidebar: rgba(15, 23, 42, 0.85); /* Sidebar glass */
+  
+  /* Text Colors */
+  --text-primary: #f1f5f9;   /* Slate 100 */
+  --text-secondary: #94a3b8; /* Slate 400 */
+  --text-muted: #64748b;     /* Slate 500 */
+  
+  /* Stage Accents (Neon/Glow) */
+  --accent-primary: #3b82f6; /* Blue 500 */
+  --accent-stage1: #06b6d4;  /* Cyan 500 */
+  --accent-stage2: #f59e0b;  /* Amber 500 */
+  --accent-stage3: #10b981;  /* Emerald 500 */
+  --accent-chairman: #eab308; /* Gold 500 */
+  
+  /* Borders & Separators */
+  --border-color: rgba(148, 163, 184, 0.1);
+  --border-glass: rgba(255, 255, 255, 0.1);
+
+  /* Typography */
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-content: 'Merriweather', serif;
+  --font-code: 'JetBrains Mono', monospace;
+
+  /* Shadows (Glows) */
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --shadow-glow-blue: 0 0 20px rgba(59, 130, 246, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-dark);
+  background-image: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background-attachment: fixed; /* Fix gradient during scroll */
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden; /* App handles scrolling */
+}
+
+/* Global Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* --- Glassmorphism Utility Classes --- */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(12px)) {
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.95);
+  }
+}
+
+/* Markdown Content Styling (Dark Mode) */
+.markdown-content {
+  font-family: var(--font-content);
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e2e8f0; /* Slate 200 for better readability */
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+  font-family: var(--font-ui);
+  color: var(--text-primary);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+
+.markdown-content p {
+  margin-bottom: 1em;
+}
+
+.markdown-content code {
+  font-family: var(--font-code);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #f472b6; /* Pink-400 for inline code */
+}
+
+.markdown-content pre {
+  background: #020617; /* Almost black */
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.markdown-content pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: 0.85em;
+}
+
+.markdown-content ul, .markdown-content ol {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid var(--accent-primary);
+  margin: 1em 0;
+  padding-left: 1em;
+  font-style: italic;
+  color: var(--text-secondary);
+  background: rgba(59, 130, 246, 0.05);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Global Button Reset/Styles */
+button {
+  font-family: var(--font-ui);
+}
